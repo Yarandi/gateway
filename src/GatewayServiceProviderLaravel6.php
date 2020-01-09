@@ -23,6 +23,7 @@ class GatewayServiceProviderLaravel6 extends ServiceProvider
 	{
         $config = __DIR__ . '/../config/gateway.php';
         $migrations = __DIR__ . '/../migrations/';
+        $seeds = __DIR__ . '/../seeds/';
         $views = __DIR__ . '/../views/';
 
         //php artisan vendor:publish --provider=Larabookir\Gateway\GatewayServiceProvider --tag=config
@@ -35,6 +36,12 @@ class GatewayServiceProviderLaravel6 extends ServiceProvider
         $this->publishes([
             $migrations => base_path('database/migrations')
         ], 'migrations');
+
+
+        // php artisan vendor:publish --provider=Larabookir\Gateway\GatewayServiceProvider --tag=seeds
+        $this->publishes([
+            $seeds => base_path('database/seeds')
+        ], 'seeds');
 
 
         $this->loadViewsFrom($views, 'gateway');
